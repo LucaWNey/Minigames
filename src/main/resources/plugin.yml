@@ -1,0 +1,6 @@
+name: Minigames
+version: "${project.version}"
+description: "${project.description}"
+author: Neyuux_
+main: fr.neyuux.minigames.Plugin
+softdepend: [NeyGin_Core]
