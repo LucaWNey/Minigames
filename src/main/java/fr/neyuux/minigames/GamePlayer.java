@@ -1,6 +1,9 @@
 package fr.neyuux.minigames;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -10,10 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class GamePlayer {
 
+    @EqualsAndHashCode.Include
     private final UUID playerUuid;
+
     private final List<String> waitingMessages = new ArrayList<>();
     private boolean spectator;
 
