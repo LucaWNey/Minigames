@@ -11,6 +11,7 @@ import java.util.Set;
 
 public class Diamants extends GameClass {
 
+
     @Override
     public Games getGameEnum() {
         return Games.DIAMANTS;
