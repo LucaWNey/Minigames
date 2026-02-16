@@ -13,7 +13,7 @@ import java.util.*;
 public class DPlayer extends GamePlayer {
 
     @Getter @Setter
-    private boolean next = true;
+    private boolean advance = true;
 
     @Getter
     private int diamonds = 0;
@@ -38,7 +38,7 @@ public class DPlayer extends GamePlayer {
 
     public void resetForNewRound()
     {
-        this.next = true;
+        this.advance = true;
         this.dangersMeets.clear();
     }
 
@@ -51,12 +51,5 @@ public class DPlayer extends GamePlayer {
     {
         //condition ?
         this.dangersMeets.add(danger);
-    }
-
-    @Override
-    public String toString()
-    {
-        return String.format("DPlayer{name=%s, diamonds=%d, next=%s}",
-                getPlayer().getName(), diamonds, next);
     }
 }
