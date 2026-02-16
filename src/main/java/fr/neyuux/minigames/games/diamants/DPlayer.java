@@ -3,13 +3,16 @@ package fr.neyuux.minigames.games.diamants;
 import fr.neyuux.minigames.GamePlayer;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
+import lombok.ToString;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
+@Getter
+@Setter
+@ToString(callSuper = true)
 public class DPlayer extends GamePlayer {
 
     @Getter @Setter
