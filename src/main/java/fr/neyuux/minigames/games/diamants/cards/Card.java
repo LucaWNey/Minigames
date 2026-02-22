@@ -2,7 +2,7 @@ package fr.neyuux.minigames.games.diamants.cards;
 
 import lombok.Getter;
 
-public class Card {
+public abstract class Card {
 
     @Getter
     private CardType type;

@@ -1,5 +1,7 @@
 package fr.neyuux.minigames;
 
+import fr.neyuux.minigames.teams.GameTeamColor;
+import fr.neyuux.minigames.teams.TeamManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -16,6 +18,7 @@ public class GameManager {
     private Games currentGame = Games.NONE;
     private GameClass gameClass;
     private final List<GamePlayer> players = new ArrayList<>();
+    private final TeamManager teamManager = new TeamManager();
 
 
     public void closeGame() {
@@ -23,6 +26,7 @@ public class GameManager {
         Bukkit.getOnlinePlayers().forEach(player -> player.teleport(new Location(Plugin.getInstance().getWorld(), Games.NONE.getSpawnX(), Games.NONE.getSpawnY(), Games.NONE.getSpawnZ())));
 
 
+        GameTeamColor.resetNext();
         this.gameClass = null;
         this.currentGame = Games.NONE;
     }

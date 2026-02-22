@@ -21,6 +21,8 @@ public abstract class GameClass {
 
     public abstract void onDisable();
 
+    public abstract int getTeamsSize();
+
 
     public void processSpectator(GamePlayer gamePlayer) {
         Player player = gamePlayer.getPlayer();

@@ -1,7 +1,7 @@
 package fr.neyuux.minigames;
 
 import fr.neyuux.minigames.listeners.GlobalListener;
-import io.github.pr0methean.betterrandom.prng.AesCounterRandom;
+import io.github.pr0methean.betterrandom.prng.Pcg64Random;
 import io.github.pr0methean.betterrandom.seed.DefaultSeedGenerator;
 import lombok.Getter;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
@@ -13,13 +13,17 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.util.Objects;
+
 @Getter
 public class Plugin extends JavaPlugin {
 
     private static Plugin INSTANCE;
     private static final String PREFIX = "§6§lMinigames §8§l» §r";
     private static final String WORLD_NAME = "Minigames";
-    public static final AesCounterRandom RANDOM = new AesCounterRandom(DefaultSeedGenerator.DEFAULT_SEED_GENERATOR);
+    public static final Pcg64Random RANDOM = new Pcg64Random(DefaultSeedGenerator.DEFAULT_SEED_GENERATOR);
 
 
     private GameManager gameManager;

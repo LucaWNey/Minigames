@@ -1,17 +1,10 @@
 package fr.neyuux.minigames.games.diamants;
 
-import fr.neyuux.minigames.GamePlayer;
 import fr.neyuux.minigames.Plugin;
 import fr.neyuux.minigames.games.diamants.cards.Card;
 import fr.neyuux.minigames.games.diamants.cards.DangerCard;
 import fr.neyuux.minigames.games.diamants.cards.DiamondsCard;
 import fr.neyuux.minigames.games.diamants.cards.TreasureCard;
-import lombok.Getter;
-import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;

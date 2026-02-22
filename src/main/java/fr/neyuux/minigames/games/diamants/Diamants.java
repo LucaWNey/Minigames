@@ -38,4 +38,9 @@ public class Diamants extends GameClass {
 
     }
 
+    @Override
+    public int getTeamsSize() {
+        return 1;
+    }
+
 }

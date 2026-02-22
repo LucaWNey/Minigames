@@ -48,4 +48,8 @@ public enum GameTeamColor {
 
         return CURRENT;
     }
+
+    public static void resetNext() {
+        CURRENT = GameTeamColor.values()[0];
+    }
 }

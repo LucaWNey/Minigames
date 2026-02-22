@@ -38,9 +38,18 @@ public abstract class GamePlayer {
         return Bukkit.getPlayer(this.playerUuid);
     }
 
+    public @Nullable OfflinePlayer getOfflinePlayer() {
+        return Bukkit.getOfflinePlayer(this.playerUuid);
+    }
+
     public boolean isOnline() {
-        OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(this.playerUuid);
+        OfflinePlayer offlinePlayer = this.getOfflinePlayer();
         return offlinePlayer != null && offlinePlayer.isOnline();
+    }
+
+    public String getName() {
+        OfflinePlayer offlinePlayer = this.getOfflinePlayer();
+        return (offlinePlayer == null ? "PlaceHolder" : offlinePlayer.getName());
     }
 
     public void sendMessage(String message) {
