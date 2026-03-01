@@ -32,6 +32,7 @@ public abstract class GameTeam {
     public void join(GamePlayer player) {
         this.players.forEach(gamePlayer -> gamePlayer.sendMessage(Plugin.getPrefix() + teamColor.getColor() + player.getName() + " a rejoint votre équipe !"));
 
+        player.setTeam(this);
         this.players.add(player);
 
         player.sendMessage(Plugin.getPrefix() + teamColor.getColor() + "Vous avez rejoint l'équipe " + teamColor.getDisplayName() + " !");

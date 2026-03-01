@@ -4,9 +4,14 @@ import fr.neyuux.minigames.teams.GameTeamColor;
 import fr.neyuux.minigames.teams.TeamManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +21,21 @@ import java.util.UUID;
 public class GameManager {
 
     private Games currentGame = Games.NONE;
+
+    @Nullable
     private GameClass gameClass;
+
     private final List<GamePlayer> players = new ArrayList<>();
     private final TeamManager teamManager = new TeamManager();
 
 
     public void closeGame() {
+
+        if (this.gameClass == null)  {
+            Bukkit.broadcastMessage(Plugin.getPrefix() + "§cImpossible de fermer un jeu en étant au lobby !");
+            return;
+        }
+
         this.gameClass.getListeners().forEach(GameListener::unregister);
         Bukkit.getOnlinePlayers().forEach(player -> player.teleport(new Location(Plugin.getInstance().getWorld(), Games.NONE.getSpawnX(), Games.NONE.getSpawnY(), Games.NONE.getSpawnZ())));
 
@@ -68,6 +82,19 @@ public class GameManager {
     }
 
     public void processSpectator(GamePlayer gamePlayer) {
+        if (this.gameClass == null) return;
         this.gameClass.processSpectator(gamePlayer);
+    }
+
+    public void processPlayer(GamePlayer gamePlayer) {
+
+        Player player = gamePlayer.getPlayer();
+
+        if (this.currentGame == Games.NONE) {
+            player.setGameMode(GameMode.ADVENTURE);
+            player.getInventory().clear();
+            player.getInventory().setArmorContents(new ItemStack[0]);
+            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false));
+        }
     }
 }

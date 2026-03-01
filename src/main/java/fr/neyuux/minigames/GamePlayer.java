@@ -1,5 +1,6 @@
 package fr.neyuux.minigames;
 
+import fr.neyuux.minigames.teams.GameTeam;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,11 @@ public abstract class GamePlayer {
 
     private final List<String> waitingMessages = new ArrayList<>();
     private boolean spectator;
+
+    @Nullable
+    private GameTeam team;
+    private String teamColor;
+
 
     public GamePlayer(UUID playerUuid) {
         this.playerUuid = playerUuid;
@@ -50,6 +56,15 @@ public abstract class GamePlayer {
     public String getName() {
         OfflinePlayer offlinePlayer = this.getOfflinePlayer();
         return (offlinePlayer == null ? "PlaceHolder" : offlinePlayer.getName());
+    }
+
+    public String getTeamColor() {
+        return (this.team == null ? this.teamColor : team.getTeamColor().getColor());
+    }
+
+    public void setTeam(@Nullable GameTeam team) {
+        this.team = team;
+        this.teamColor = (team == null ? null : team.getTeamColor().getColor());
     }
 
     public void sendMessage(String message) {
