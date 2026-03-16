@@ -1,11 +1,14 @@
 package fr.neyuux.minigames.games.diamants;
 
-import fr.neyuux.minigames.games.diamants.cards.*;
+import fr.neyuux.minigames.Plugin;
+import fr.neyuux.minigames.games.diamants.cards.Card;
+import fr.neyuux.minigames.games.diamants.cards.DangerCard;
+import fr.neyuux.minigames.games.diamants.cards.DiamondsCard;
+import fr.neyuux.minigames.games.diamants.cards.TreasureCard;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.neyuux.minigames.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

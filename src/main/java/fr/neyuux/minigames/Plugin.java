@@ -1,5 +1,6 @@
 package fr.neyuux.minigames;
 
+import fr.neyuux.minigames.items.CustomItemStack;
 import fr.neyuux.minigames.listeners.GlobalListener;
 import io.github.pr0methean.betterrandom.prng.Pcg64Random;
 import io.github.pr0methean.betterrandom.seed.DefaultSeedGenerator;
@@ -8,6 +9,7 @@ import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -21,7 +23,7 @@ import java.util.Objects;
 public class Plugin extends JavaPlugin {
 
     private static Plugin INSTANCE;
-    private static final String PREFIX = "§6§lMinigames §8§l» §r";
+    private static final String PREFIX_ARROW = " §8§l» §r";
     private static final String WORLD_NAME = "Minigames";
     public static final Pcg64Random RANDOM = new Pcg64Random(DefaultSeedGenerator.DEFAULT_SEED_GENERATOR);
 
@@ -40,6 +42,7 @@ public class Plugin extends JavaPlugin {
         this.world = Bukkit.getWorld(WORLD_NAME);
 
         new GlobalListener().register();
+        new CustomItemStack(Material.ACACIA_DOOR_ITEM).register();
 
         super.onEnable();
     }
@@ -49,11 +52,11 @@ public class Plugin extends JavaPlugin {
     }
 
     public static String getPrefix() {
-        return PREFIX;
+        return getInstance().getGameManager().getCurrentGame().getPrefix() + PREFIX_ARROW;
     }
 
     public static String getPrefixWithoutArrow() {
-        return PREFIX.substring(0, PREFIX.length() - 9);
+        return getInstance().getGameManager().getCurrentGame().getPrefix();
     }
 
 
