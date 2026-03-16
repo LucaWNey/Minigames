@@ -5,12 +5,15 @@ import lombok.Getter;
 public abstract class Card {
 
     @Getter
-    private CardType type;
+    private final CardType type;
+
+    public Card(CardType type) {
+        this.type = type;
+    }
 
     public enum CardType {
         DIAMONDS,
         DANGER,
         TREASURE
     }
-
 }

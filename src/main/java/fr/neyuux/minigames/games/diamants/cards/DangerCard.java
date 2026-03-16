@@ -7,6 +7,8 @@ public class DangerCard extends Card {
     private final DangerCardType type;
 
     public DangerCard(DangerCardType type){
+
+        super(Card.CardType.DANGER);
         this.type=type;
     }
 

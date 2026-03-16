@@ -8,6 +8,7 @@ public class DiamondsCard extends Card {
 
     public DiamondsCard(int diamonds)
     {
+        super(Card.CardType.DIAMONDS);
         this.diamonds=diamonds;
     }
 }

@@ -1,5 +1,6 @@
 package fr.neyuux.minigames;
 
+import fr.minuskube.inv.SmartInventory;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -12,6 +13,8 @@ public abstract class GameClass {
 
 
     public abstract Games getGameEnum();
+
+    public abstract SmartInventory getMainConfigInv();
 
     public abstract GamePlayer createPlayer(Player player);
 

@@ -12,10 +12,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Getter
 public class GameManager {
@@ -79,6 +77,27 @@ public class GameManager {
                 .stream()
                 .filter(gamePlayer -> gamePlayer.getPlayerUuid().equals(player.getUniqueId()))
                 .findAny();
+    }
+
+    public Set<GamePlayer> getPlayingPlayers() {
+        return this.players
+                .stream()
+                .filter(gamePlayer -> !gamePlayer.isSpectator())
+                .collect(Collectors.toSet());
+    }
+
+    public Set<GamePlayer> getSpectators() {
+        return this.players
+                .stream()
+                .filter(GamePlayer::isSpectator)
+                .collect(Collectors.toSet());
+    }
+
+    public Set<GamePlayer> getOPs() {
+        return this.players
+                .stream()
+                .filter(GamePlayer::isOp)
+                .collect(Collectors.toSet());
     }
 
     public void processSpectator(GamePlayer gamePlayer) {

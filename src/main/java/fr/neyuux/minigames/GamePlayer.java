@@ -25,6 +25,7 @@ public abstract class GamePlayer {
 
     private final List<String> waitingMessages = new ArrayList<>();
     private boolean spectator;
+    private boolean op;
 
     @Nullable
     private GameTeam team;
@@ -51,6 +52,10 @@ public abstract class GamePlayer {
     public boolean isOnline() {
         OfflinePlayer offlinePlayer = this.getOfflinePlayer();
         return offlinePlayer != null && offlinePlayer.isOnline();
+    }
+
+    public boolean isOp() {
+        return op || this.getOfflinePlayer().isOp();
     }
 
     public String getName() {
