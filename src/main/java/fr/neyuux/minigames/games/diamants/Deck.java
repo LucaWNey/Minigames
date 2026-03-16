@@ -5,7 +5,6 @@ import fr.neyuux.minigames.games.diamants.cards.Card;
 import fr.neyuux.minigames.games.diamants.cards.DangerCard;
 import fr.neyuux.minigames.games.diamants.cards.DiamondsCard;
 import fr.neyuux.minigames.games.diamants.cards.TreasureCard;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,7 +58,7 @@ public class Deck {
 
     public Card draw()
     {
-        return deck.get(0);
+        return deck.remove(0);
     }
 
 

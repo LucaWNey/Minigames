@@ -7,10 +7,13 @@ public abstract class Card {
     @Getter
     private CardType type;
 
+    public Card(CardType type) {
+        this.type = type;
+    }
+
     public enum CardType {
         DIAMONDS,
         DANGER,
         TREASURE
     }
-
 }
